@@ -13,6 +13,7 @@ function calculateSavingsData(
   const data = [];
   for (i = 1; i <= monthsToCalculate; i++) {
     amount = calculateMonthlySavings(amount, monthlySavings);
+    if (i % interestPaymentPeriod === 0) amount += amount * (interestRate/100);
     data.push({
       month: i,
       amount

@@ -5,7 +5,7 @@ const { expect } = require("../setup/chai.setup");
 const exampleReqBody = {
   initialSavings: 100,
   monthlySavings: 10,
-  interestRate: 4,
+  interestRate: 5,
   interestPaymentPeriod: 3,
   monthsToCalculate: 1
 };
@@ -17,10 +17,20 @@ const expectedResBody = [
   }
 ];
 
-describe("/api/v1/savings", function() {
-  describe("GET", function() {
-    it("returns 200", async function() {
+describe("GET /api/v1/savings", function() {
+  describe("1 month savings", function() {
+    it("returns 200 and the correct savings data (no interest)", async function() {
       this.timeout(100000);
+      const res = await server()
+        .get("/api/v1/savings")
+        .send(exampleReqBody);
+      expect(res.status).to.equal(200);
+      expect(res.body).to.deep.equal(expectedResBody);
+    });
+    it("returns 200 and the correct savings data (with interest)", async function() {
+      this.timeout(100000);
+      exampleReqBody.interestPaymentPeriod = 1;
+      expectedResBody[0].amount = 115.5 ;
       const res = await server()
         .get("/api/v1/savings")
         .send(exampleReqBody);
