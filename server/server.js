@@ -1,10 +1,13 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 
 const routes = require('./routes')
 
 app.set('port', (process.env.PORT || 3001));
+
+app.use(bodyParser.json());
 
 // Express only serves static assets in production
 if (process.env.NODE_ENV === 'production') {
