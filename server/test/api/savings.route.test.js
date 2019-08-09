@@ -22,7 +22,7 @@ describe('GET /api/v1/savings', () => {
         .get('/api/v1/savings')
         .send(exampleReqBody);
       expect(res.status).to.equal(200);
-      expect(res.body).to.deep.equal(expectedResBody);
+      expect(res.body.savingsPerMonth).to.deep.equal(expectedResBody);
     });
     it('returns 200 and the correct savings data (with interest)', async () => {
       exampleReqBody.interestPaymentPeriod = 1;
@@ -31,7 +31,7 @@ describe('GET /api/v1/savings', () => {
         .get('/api/v1/savings')
         .send(exampleReqBody);
       expect(res.status).to.equal(200);
-      expect(res.body).to.deep.equal(expectedResBody);
+      expect(res.body.savingsPerMonth).to.deep.equal(expectedResBody);
     });
   });
   describe('3 month savings', () => {
@@ -61,7 +61,7 @@ describe('GET /api/v1/savings', () => {
         .get('/api/v1/savings')
         .send(exampleReqBody);
       expect(res.status).to.equal(200);
-      expect(res.body).to.deep.equal(expectedResBody);
+      expect(res.body.savingsPerMonth).to.deep.equal(expectedResBody);
     });
   });
 });
