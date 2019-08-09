@@ -26,7 +26,9 @@ const getSavings = (req, res) => {
       amount,
     });
   }
-  res.status(200).send(savingsPerMonth);
+  res.status(200).send({
+    savingsPerMonth,
+  });
 };
 
 module.exports = {
