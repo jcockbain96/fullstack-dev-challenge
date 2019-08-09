@@ -1,8 +1,6 @@
 const chai = require('chai');
+const chaiHttp = require('chai-http');
 
-[
-  require('chai-http'),
-]
-.map(plugin => chai.use(plugin))
+chai.use(chaiHttp);
 
 module.exports = chai;
