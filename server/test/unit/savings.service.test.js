@@ -1,22 +1,23 @@
 const { expect } = require('../setup/chai.setup');
 
 const {
-  calculateMonthlySavings,
+  calculateIncreasedSavings,
   calculateInterest,
+  calculateIncreasedSavingsWithInterest,
   interestIsDue,
 } = require('../../services/savings.service');
 
 describe('savings.service.js', () => {
-  describe('calculateMonthlySavings(currentSavings, savingsForMonth)', () => {
+  describe('calculateIncreasedSavings(currentSavings, savingsForMonth)', () => {
     describe('10, 10', () => {
       it('returns 20', () => {
-        const result = calculateMonthlySavings(10, 10);
+        const result = calculateIncreasedSavings(10, 10);
         expect(result).to.equal(20);
       });
     });
     describe('10, 50', () => {
       it('returns 60', () => {
-        const result = calculateMonthlySavings(10, 10);
+        const result = calculateIncreasedSavings(10, 10);
         expect(result).to.equal(20);
       });
     });
@@ -32,6 +33,20 @@ describe('savings.service.js', () => {
       it('returns 5', () => {
         const result = calculateInterest(100, 5);
         expect(result).to.equal(5);
+      });
+    });
+  });
+  describe('calculateIncreasedSavingsWithInterest(amount, monthlySavings, interestRate)', () => {
+    describe('100, 10, 1', () => {
+      it('returns 111.1', () => {
+        const result = calculateIncreasedSavingsWithInterest(100, 10, 1);
+        expect(result).to.equal(111.1);
+      });
+    });
+    describe('100, 10, 10', () => {
+      it('returns 121', () => {
+        const result = calculateIncreasedSavingsWithInterest(100, 10, 10);
+        expect(result).to.equal(121);
       });
     });
   });

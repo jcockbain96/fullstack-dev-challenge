@@ -1,6 +1,7 @@
 const {
   interestIsDue,
-  calculateInterest,
+  calculateIncreasedSavings,
+  calculateIncreasedSavingsWithInterest,
 } = require('../services/savings.service');
 
 const getSavings = (req, res) => {
@@ -17,10 +18,9 @@ const getSavings = (req, res) => {
   const interestRatePerPaymentPeriod = interestRate * (interestPaymentPeriod / 12);
 
   for (let month = 1; month <= monthsToCalculate; month += 1) {
-    amount += monthlySavings;
-    if (interestIsDue(month, interestPaymentPeriod)) {
-      amount += calculateInterest(amount, interestRatePerPaymentPeriod);
-    }
+    amount = (interestIsDue(month, interestPaymentPeriod))
+      ? calculateIncreasedSavingsWithInterest(amount, monthlySavings, interestRatePerPaymentPeriod)
+      : calculateIncreasedSavings(amount, monthlySavings);
     savingsPerMonth.push({
       month,
       amount,
