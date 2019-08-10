@@ -13,7 +13,9 @@ export default class SliderInput extends Component {
 	}
 
 	handleChange(e) {
-		const value = e.target.value
+    const { submitValue } = this.props;
+    const value = e.target.value;
+    submitValue(Number(value));
 		this.setState({value})
 	}
 

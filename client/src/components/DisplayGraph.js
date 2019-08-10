@@ -1,11 +1,26 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { VictoryLine, VictoryChart } from 'victory'
+import apiRequests from '../utils/apiRequests'
 
 export default class DisplayGraph extends Component {
+  constructor() {
+    super();
+    this.state = {
+      data: [],
+    }
+  }
+
+  async componentDidUpdate(prevProps, prevState) {
+    const { savingsParams} = this.props;
+    if (savingsParams !== prevProps.savingsParams) {
+    const response = await apiRequests.postSavings(savingsParams);
+    this.setState({data: response.data.savingsPerMonth })
+    };
+  }
 
 	render() {
-		const { data } = this.props;
+		const { data } = this.state;
 
 		const baseProps = {
   		width: 450,
@@ -66,5 +81,6 @@ export default class DisplayGraph extends Component {
 }
 
 DisplayGraph.propTypes = {
-	data: PropTypes.arrayOf(PropTypes.object)
+  data: PropTypes.arrayOf(PropTypes.object),
+  savingsParams: PropTypes.object,
 };

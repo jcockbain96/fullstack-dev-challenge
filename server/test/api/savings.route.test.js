@@ -2,7 +2,7 @@ const server = require('../setup/server.setup');
 
 const { expect } = require('../setup/chai.setup');
 
-describe('GET /api/v1/savings', () => {
+describe('POST /api/v1/savings', () => {
   describe('1 month savings', () => {
     const exampleReqBody = {
       initialSavings: 100,
@@ -19,7 +19,7 @@ describe('GET /api/v1/savings', () => {
     ];
     it('returns 200 and the correct savings data (no interest)', async () => {
       const res = await server()
-        .get('/api/v1/savings')
+        .post('/api/v1/savings')
         .send(exampleReqBody);
       expect(res.status).to.equal(200);
       expect(res.body.savingsPerMonth).to.deep.equal(expectedResBody);
@@ -28,7 +28,7 @@ describe('GET /api/v1/savings', () => {
       exampleReqBody.interestPaymentPeriod = 1;
       expectedResBody[0].amount = 111.1;
       const res = await server()
-        .get('/api/v1/savings')
+        .post('/api/v1/savings')
         .send(exampleReqBody);
       expect(res.status).to.equal(200);
       expect(res.body.savingsPerMonth).to.deep.equal(expectedResBody);
@@ -58,7 +58,7 @@ describe('GET /api/v1/savings', () => {
     ];
     it('returns 200 and the correct savings data (with interest)', async () => {
       const res = await server()
-        .get('/api/v1/savings')
+        .post('/api/v1/savings')
         .send(exampleReqBody);
       expect(res.status).to.equal(200);
       expect(res.body.savingsPerMonth).to.deep.equal(expectedResBody);
