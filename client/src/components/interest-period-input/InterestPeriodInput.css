@@ -1,0 +1,16 @@
+.interest-period-input {
+	margin: auto;
+	font-weight: 800;
+  white-space: nowrap;
+  padding: 5px;
+	display: inline-block;
+}
+
+.inputButton {
+  margin: 0px 5px;
+}
+
+.inputButton:hover {
+  border: 1px solid #00b2ff;
+}
+
