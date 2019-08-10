@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { VictoryLine, VictoryChart } from 'victory';
-import apiRequests from '../utils/apiRequests';
+import apiRequests from '../../utils/apiRequests';
 
 export default class DisplayGraph extends Component {
   constructor() {

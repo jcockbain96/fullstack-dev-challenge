@@ -25,7 +25,7 @@ export default class SliderInput extends Component {
       <div className="fmz-slider">
         <p>
           {value}
-%
+          %
         </p>
         <input
           type="range"

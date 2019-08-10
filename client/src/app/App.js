@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import CurrencyInput from './components/CurrencyInput';
-import SliderInput from './components/SliderInput';
-import DisplayGraph from './components/DisplayGraph';
+import CurrencyInput from '../components/currency-input/CurrencyInput';
+import SliderInput from '../components/slider-input/SliderInput';
+import DisplayGraph from '../components/display-graph/DisplayGraph';
 import './App.css';
 
 class App extends Component {
