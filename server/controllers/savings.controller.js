@@ -4,7 +4,7 @@ const {
   calculateIncreasedSavingsWithInterest,
 } = require('../services/savings.service');
 
-const getSavings = (req, res) => {
+const postSavings = (req, res) => {
   const {
     initialSavings,
     monthlySavings,
@@ -32,5 +32,5 @@ const getSavings = (req, res) => {
 };
 
 module.exports = {
-  getSavings,
+  postSavings,
 };
