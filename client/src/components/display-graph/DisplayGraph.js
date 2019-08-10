@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { VictoryLine, VictoryChart } from 'victory';
+import {
+  VictoryLine, VictoryChart,
+} from 'victory';
 import apiRequests from '../../utils/apiRequests';
 
 export default class DisplayGraph extends Component {
@@ -23,9 +25,7 @@ export default class DisplayGraph extends Component {
     const { data } = this.state;
 
     const baseProps = {
-      width: 450,
-      height: 300,
-      padding: 50,
+
       colorScale: ['#48C8FF', '#00b2ff', '#038AD0', '#006C9B'],
     };
 
@@ -48,8 +48,8 @@ export default class DisplayGraph extends Component {
         style: {
           axisLabel: baseLabelStyles,
           grid: {
-            fill: 'transparent',
-            stroke: 'transparent',
+            fill: 'black',
+            stroke: 'black',
           },
           ticks: {
             fill: 'transparent',
@@ -72,7 +72,14 @@ export default class DisplayGraph extends Component {
 
     return (
       <div>
-        <VictoryChart animate={{ duration: 100 }} theme={theme}>
+        <VictoryChart
+          animate={{ duration: 100 }}
+          theme={theme}
+          height={200}
+          padding={{
+            top: 20, bottom: 20, left: 80, right: 80,
+          }}
+        >
           <VictoryLine {...{ data }} y="amount" />
         </VictoryChart>
       </div>

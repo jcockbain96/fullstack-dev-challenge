@@ -32,29 +32,37 @@ class App extends Component {
         <div className="header-banner">
           <h1 className="fmz-white-font">Finimize Interest Rate Calculator</h1>
         </div>
-        <div className="financial-inputs">
-          <p className="input-label">How much have you saved?</p>
-          <CurrencyInput
-            defaultValue={0}
-            submitValue={value => this.setState({ initialSavings: value })}
-          />
+        <div className="financial-inputs-container">
+          <div className="financial-input">
+            <p className="input-label">How much have you saved?</p>
+            <CurrencyInput
+              defaultValue={0}
+              submitValue={value => this.setState({ initialSavings: value })}
+            />
+          </div>
 
-          <p className="input-label">How much will you save each month?</p>
-          <CurrencyInput
-            defaultValue={0}
-            submitValue={value => this.setState({ monthlySavings: value })}
-          />
+          <div className="financial-input">
+            <p className="input-label">How much will you save each month?</p>
+            <CurrencyInput
+              defaultValue={0}
+              submitValue={value => this.setState({ monthlySavings: value })}
+            />
+          </div>
 
-          <p className="input-label">How regularly will you earn interest?</p>
-          <InterestPeriodInput
-            submitValue={value => this.setState({ interestPaymentPeriod: value })}
-          />
+          <div className="financial-input">
+            <p className="input-label">How regularly will you earn interest?</p>
+            <InterestPeriodInput
+              submitValue={value => this.setState({ interestPaymentPeriod: value })}
+            />
+          </div>
 
-          <p className="input-label">How much interest will you earn per year?</p>
-          <SliderInput
-            defaultValue={4}
-            submitValue={value => this.setState({ annualInterest: value })}
-          />
+          <div className="financial-input">
+            <p className="input-label">How much interest will you earn per year?</p>
+            <SliderInput
+              defaultValue={4}
+              submitValue={value => this.setState({ annualInterest: value })}
+            />
+          </div>
 
         </div>
         <div className="financial-display">
