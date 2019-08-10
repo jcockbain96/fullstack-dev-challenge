@@ -37,6 +37,17 @@ p {
 	color: #1D1F20;
 }
 
+.financial-inputs-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  justify-content: space-between;
+}
+.financial-input {
+  margin: 0px 10px;
+  text-align: center;
+}
+
 .fmz-white-font {
 	color: #ffffff;
 }
@@ -46,11 +57,7 @@ p {
 	padding: 20px;
 }
 
-.financial-inputs {
-	padding: 20px;
-}
-
 .input-label {
-	margin-bottom: 4px;
+	margin-bottom: 16px;
 	margin-top: 12px;
 }

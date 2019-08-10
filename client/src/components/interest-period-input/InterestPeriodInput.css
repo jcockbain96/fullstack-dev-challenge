@@ -7,10 +7,13 @@
 }
 
 .inputButton {
+  font-size: 15px;
   margin: 0px 5px;
+  background-color: white;
+  border: 2px solid #AAB8C8;
+  border-radius: 8px;
+  width: 30%;
+  height: 40px;
 }
 
-.inputButton:hover {
-  border: 1px solid #00b2ff;
-}
 
