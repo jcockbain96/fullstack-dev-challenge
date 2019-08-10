@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CurrencyInput from '../components/currency-input/CurrencyInput';
 import SliderInput from '../components/slider-input/SliderInput';
 import DisplayGraph from '../components/display-graph/DisplayGraph';
+import InterestPeriodInput from '../components/interest-period-input';
 import './App.css';
 
 class App extends Component {
@@ -11,16 +12,19 @@ class App extends Component {
       initialSavings: 0,
       monthlySavings: 0,
       annualInterest: 4,
+      interestPaymentPeriod: 1,
     };
   }
 
   render() {
-    const { initialSavings, monthlySavings, annualInterest } = this.state;
+    const {
+      initialSavings, monthlySavings, annualInterest, interestPaymentPeriod,
+    } = this.state;
     const savingsParams = {
       initialSavings,
       monthlySavings,
       interestRate: annualInterest,
-      interestPaymentPeriod: 12,
+      interestPaymentPeriod,
       monthsToCalculate: 600,
     };
     return (
@@ -41,11 +45,17 @@ class App extends Component {
             submitValue={value => this.setState({ monthlySavings: value })}
           />
 
+          <p className="input-label">How regularly will you earn interest?</p>
+          <InterestPeriodInput
+            submitValue={value => this.setState({ interestPaymentPeriod: value })}
+          />
+
           <p className="input-label">How much interest will you earn per year?</p>
           <SliderInput
             defaultValue={4}
             submitValue={value => this.setState({ annualInterest: value })}
           />
+
         </div>
         <div className="financial-display">
           <DisplayGraph
