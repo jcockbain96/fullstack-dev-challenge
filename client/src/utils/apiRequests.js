@@ -13,4 +13,4 @@ const postSavings = async (savingsParams) => {
 
 export default {
   postSavings,
-}
+};
