@@ -73,12 +73,13 @@ export default class DisplayGraph extends Component {
           }}
         >
           <VictoryAxis
+            tickFormat={tick => `£${tick}`}
             dependentAxis
             axisLabelComponent={(
               <VictoryLabel
                 dy={-25}
                 style={axisStyles}
-                text="Savings (£)"
+                text="Savings"
               />
 )}
             style={{
