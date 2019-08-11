@@ -81,7 +81,7 @@ export default class DisplayGraph extends Component {
                 style={axisStyles}
                 text="Savings"
               />
-)}
+            )}
             style={{
               tickLabels: labelStyles,
             }}
@@ -92,7 +92,7 @@ export default class DisplayGraph extends Component {
                 style={axisStyles}
                 text="Month"
               />
-)}
+            )}
             style={{
               tickLabels: labelStyles,
             }}
@@ -105,11 +105,9 @@ export default class DisplayGraph extends Component {
 }
 
 DisplayGraph.defaultProps = {
-  data: [{}],
-  savingsParams: [],
+  savingsParams: {},
 };
 
 DisplayGraph.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.object),
   savingsParams: PropTypes.objectOf(PropTypes.number),
 };
