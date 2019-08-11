@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-  VictoryLine, VictoryChart,
+  VictoryLine, VictoryChart, VictoryAxis, VictoryLabel,
 } from 'victory';
 import apiRequests from '../../utils/apiRequests';
 
@@ -23,33 +23,25 @@ export default class DisplayGraph extends Component {
 
   render() {
     const { data } = this.state;
-
-    const baseProps = {
-
-      colorScale: ['#48C8FF', '#00b2ff', '#038AD0', '#006C9B'],
+    const baseLabelStyles = {
+      padding: 10,
     };
 
-    const baseLabelStyles = {
-      fontFamily: "'Avenir Next', 'Avenir', 'Lato', 'Helvetica', 'Arial', 'Sans-Serif'",
-      fontSize: 2,
-      letterSpacing: 'normal',
-      padding: 10,
-      fill: '#00b2ff',
-      stroke: 'transparent',
+    const labelStyles = {
+      padding: 5, fontFamily: 'Avenir Next', fontSize: 6, fontWeight: 400,
+    };
+
+    const axisStyles = {
+      padding: 5, fontFamily: 'Avenir Next', fontSize: 8, fontWeight: 400,
     };
 
     const theme = {
-      area: {
-        style: {
-          labels: baseLabelStyles,
-        },
-      },
       axis: Object.assign({
         style: {
           axisLabel: baseLabelStyles,
           grid: {
-            fill: 'black',
-            stroke: 'black',
+            fill: '#AAB8C8',
+            stroke: '#AAB8C8',
           },
           ticks: {
             fill: 'transparent',
@@ -57,7 +49,7 @@ export default class DisplayGraph extends Component {
             stroke: 'transparent',
           },
         },
-      }, baseProps),
+      }),
       line: Object.assign({
         style: {
           data: {
@@ -67,7 +59,7 @@ export default class DisplayGraph extends Component {
           },
           labels: baseLabelStyles,
         },
-      }, baseProps),
+      }),
     };
 
     return (
@@ -80,6 +72,30 @@ export default class DisplayGraph extends Component {
             top: 20, bottom: 20, left: 80, right: 80,
           }}
         >
+          <VictoryAxis
+            dependentAxis
+            axisLabelComponent={(
+              <VictoryLabel
+                dy={-25}
+                style={axisStyles}
+                text="Savings (£)"
+              />
+)}
+            style={{
+              tickLabels: labelStyles,
+            }}
+          />
+          <VictoryAxis
+            axisLabelComponent={(
+              <VictoryLabel
+                style={axisStyles}
+                text="Month"
+              />
+)}
+            style={{
+              tickLabels: labelStyles,
+            }}
+          />
           <VictoryLine {...{ data }} y="amount" />
         </VictoryChart>
       </div>
