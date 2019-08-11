@@ -81,17 +81,19 @@ describe('POST /api/v1/savings', () => {
         interestPaymentPeriod: 3,
         monthsToCalculate: 3,
       };
-      it('returns 422 if a parameter is an invalid type', async () => {
+      it('returns 422 and an error list if a parameter is an invalid type', async () => {
         const res = await server()
           .post('/api/v1/savings')
           .send(reqBodyWithInvalidType);
         expect(res.status).to.equal(422);
+        expect(res.body.errors).to.be.an('array');
       });
-      it('returns 422 if missing a parameter', async () => {
+      it('returns 422 and an error list if missing a parameter', async () => {
         const res = await server()
           .post('/api/v1/savings')
           .send(reqBodyMissingParameter);
         expect(res.status).to.equal(422);
+        expect(res.body.errors).to.be.an('array');
       });
     });
   });
