@@ -1,10 +1,14 @@
 const express = require('express');
 
+const requestValidator = require('../middleware/request-validator');
 const savingsController = require('../controllers/savings.controller');
 
 const router = express.Router();
 
 router.route('/')
-  .post(savingsController.postSavings);
+  .post(
+    requestValidator.validate('postSavings'),
+    savingsController.postSavings,
+  );
 
 module.exports = router;
