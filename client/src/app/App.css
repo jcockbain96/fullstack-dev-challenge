@@ -41,7 +41,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   padding: 20px;
-  justify-content: space-between;
+  justify-content: center;
 }
 .financial-input {
   margin: 0px 10px;
