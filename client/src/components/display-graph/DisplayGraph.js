@@ -67,18 +67,22 @@ export default class DisplayGraph extends Component {
         <VictoryChart
           animate={{ duration: 100 }}
           theme={theme}
-          height={200}
+          height={250}
           padding={{
             top: 20, bottom: 20, left: 80, right: 80,
           }}
         >
           <VictoryAxis
+            tickFormat={tick => `£${tick}`}
             dependentAxis
             axisLabelComponent={(
               <VictoryLabel
                 dy={-25}
+                active
                 style={axisStyles}
-                text="Savings (£)"
+                text="Savings"
+                textAnchor="middle"
+                verticalAnchor="end"
               />
 )}
             style={{
@@ -88,6 +92,7 @@ export default class DisplayGraph extends Component {
           <VictoryAxis
             axisLabelComponent={(
               <VictoryLabel
+                active
                 style={axisStyles}
                 text="Month"
               />
