@@ -5,11 +5,11 @@ import apiRequests from '../../utils/apiRequests';
 
 const mockedData = {
   data: {
-    savngsPerMonth: [
-      { month: 1, amount: 100}
-    ]
-  }
-}
+    savingsPerMonth: [
+      { month: 1, amount: 100 },
+    ],
+  },
+};
 
 const props = {
   savingsParams: {
@@ -18,8 +18,8 @@ const props = {
     interestRate: 2,
     interestPaymentPeriod: 2,
     monthsToCalculate: 600,
-  }
-}
+  },
+};
 
 describe('<App />', () => {
   beforeAll(() => {

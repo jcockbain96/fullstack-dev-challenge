@@ -3,22 +3,25 @@ import CurrencyInput from '../components/currency-input/CurrencyInput';
 import SliderInput from '../components/slider-input/SliderInput';
 import DisplayGraph from '../components/display-graph/DisplayGraph';
 import InterestPeriodInput from '../components/interest-period-input';
+import DisplayCurrencyInput from '../components/display-currency-input';
 import './App.css';
 
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       initialSavings: 0,
       monthlySavings: 0,
       annualInterest: 4,
       interestPaymentPeriod: 1,
+      currency: 'GBP',
     };
   }
 
   render() {
     const {
       initialSavings, monthlySavings, annualInterest, interestPaymentPeriod,
+      currency,
     } = this.state;
     const savingsParams = {
       initialSavings,
@@ -50,6 +53,14 @@ class App extends Component {
           </div>
 
           <div className="financial-input">
+            <p className="input-label">What currency do you want the results to be in?</p>
+            <DisplayCurrencyInput
+              submitValue={value => this.setState({ currency: value })}
+            />
+          </div>
+
+
+          <div className="financial-input">
             <p className="input-label">How regularly will you earn interest?</p>
             <InterestPeriodInput
               submitValue={value => this.setState({ interestPaymentPeriod: value })}
@@ -68,6 +79,7 @@ class App extends Component {
         <div className="financial-display">
           <DisplayGraph
             savingsParams={savingsParams}
+            currency={currency}
           />
         </div>
       </div>

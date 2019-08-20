@@ -5,6 +5,7 @@ const {
   calculateInterest,
   calculateIncreasedSavingsWithInterest,
   interestIsDue,
+  multiplyByCurrencyCode,
 } = require('../../services/savings.service');
 
 describe('savings.service.js', () => {
@@ -61,6 +62,14 @@ describe('savings.service.js', () => {
       it('returns false', () => {
         const result = interestIsDue(7, 5);
         expect(result).to.equal(false);
+      });
+    });
+  });
+  describe('multiplyByCurrency(savingsData, currencyCode)', () => {
+    describe('100, USD', () => {
+      it('returns 120', () => {
+        const result = multiplyByCurrencyCode(100, 'USD');
+        expect(result).to.equal(150);
       });
     });
   });

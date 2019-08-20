@@ -4,9 +4,10 @@ const {
   interestIsDue,
   calculateIncreasedSavings,
   calculateIncreasedSavingsWithInterest,
+  getCurrencyMultiplier,
 } = require('../services/savings.service');
 
-const postSavings = (req, res, next) => {
+const postSavings = async (req, res, next) => {
   try {
     const errors = validationResult(req);
 
@@ -15,13 +16,21 @@ const postSavings = (req, res, next) => {
       return;
     }
 
-    const {
+    let {
       initialSavings,
       monthlySavings,
       interestRate,
       interestPaymentPeriod,
       monthsToCalculate,
     } = req.body;
+
+    const { currencyCode } = req.query;
+    const currencyMultiplier = (currencyCode)
+      ? await getCurrencyMultiplier(currencyCode)
+      : 1;
+
+    initialSavings *= currencyMultiplier;
+    monthlySavings *= currencyMultiplier;
 
     let amount = initialSavings;
     const savingsPerMonth = [];

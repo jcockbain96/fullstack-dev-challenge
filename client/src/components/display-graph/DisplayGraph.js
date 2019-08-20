@@ -14,9 +14,9 @@ export default class DisplayGraph extends Component {
   }
 
   async componentDidUpdate(prevProps) {
-    const { savingsParams } = this.props;
+    const { savingsParams, currency } = this.props;
     if (savingsParams !== prevProps.savingsParams) {
-      const response = await apiRequests.postSavings(savingsParams);
+      const response = await apiRequests.postSavings(savingsParams, currency);
       this.setState({ data: response.data.savingsPerMonth });
     }
   }
@@ -106,8 +106,10 @@ export default class DisplayGraph extends Component {
 
 DisplayGraph.defaultProps = {
   savingsParams: {},
+  currency: 'GBP',
 };
 
 DisplayGraph.propTypes = {
   savingsParams: PropTypes.objectOf(PropTypes.number),
+  currency: PropTypes.string,
 };

@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const expressValidator = require('express-validator');
 const routes = require('./routes');
+const errorHandler = require('./middleware/error-handler');
 
 const app = express();
 
@@ -20,6 +21,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use('/api/v1/', routes);
+
+app.use(errorHandler.handleErrors);
 
 app.listen(app.get('port'), () => {
   console.log(`Find the server at: http://localhost:${app.get('port')}/`);
